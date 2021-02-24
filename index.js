@@ -8,8 +8,12 @@ async function init() {
         transform: body => cheerio.load(body)
     });
     
-    const webSiteTitle = $('title');
-    console.log(webSiteTitle.html());
+    const quotes = $('.quote span.text').each((i,el) => {
+        // console.log(i, $(el).text());
+        const quote_text = $(el).text();
+        const quote = quote_text.replace(/(^\“|\”$)/g, "");
+        console.log(i, quote);
+    });
 }
 
 init();
