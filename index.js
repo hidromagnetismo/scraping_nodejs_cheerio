@@ -8,11 +8,12 @@ async function init() {
         transform: body => cheerio.load(body)
     });
     
-    const quotes = $('.quote span.text').each((i,el) => {
-        // console.log(i, $(el).text());
-        const quote_text = $(el).text();
-        const quote = quote_text.replace(/(^\“|\”$)/g, "");
-        console.log(i, quote);
+    $('.quote').each((i, el) => {
+        const text = $(el).find('span.text').text().replace(/(^\“|\”$)/g, "");
+        const author = $(el).find('span small.author').text();
+        const tags = [];
+        $(el).find('.tags a.tag').each((i, el) => tags.push($(el).text()));
+        console.log(tags.join(','));
     });
 }
 
