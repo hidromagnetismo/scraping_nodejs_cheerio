@@ -7,7 +7,9 @@ async function init() {
         uri: 'http://quotes.toscrape.com/',
         transform: body => cheerio.load(body)
     });
-    console.log($);
+    
+    const webSiteTitle = $('title');
+    console.log(webSiteTitle.html());
 }
 
 init();
